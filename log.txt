@@ -1,0 +1,77 @@
+2022-10-19 18:22:01   Info  This should pass
+2022-10-19 18:22:01   Info  Excel File Read Successfully
+2022-10-19 18:22:01   Info  Excel File Closed Successfully
+2022-10-19 18:22:01   Info  Input Excel File Read Complete
+2022-10-19 18:22:01   Info  Entered IEC Number
+2022-10-19 18:22:01   Info  Entered IFSC Number
+2022-10-19 18:22:01   Info  Entered Start Date
+2022-10-19 18:22:01   Info  Entered End Date
+2022-10-19 18:22:02   Info  Entered Captcha is 1111
+2022-10-19 18:22:02   Info  Results cleared for next execution
+2022-10-19 18:22:02   Info  Clicked on Show Details
+2022-10-19 18:22:15   Info  Entered IEC Number
+2022-10-19 18:22:15   Info  Entered IFSC Number
+2022-10-19 18:22:15   Info  Entered Start Date
+2022-10-19 18:22:15   Info  Entered End Date
+2022-10-19 18:22:16   Info  Entered Captcha is 11111
+2022-10-19 18:22:16   Info  Results cleared for next execution
+2022-10-19 18:22:16   Info  Clicked on Show Details
+2022-10-19 18:22:01   Info  The loop did not finish within the limit.
+2022-10-19 18:22:01   Info  next record
+2022-10-19 18:22:01   Info  Record Entered Successfully
+2022-10-19 18:22:35   Info  Entered IEC Number
+2022-10-19 18:22:35   Info  Entered IFSC Number
+2022-10-19 18:22:35   Info  Entered Start Date
+2022-10-19 18:22:35   Info  Entered End Date
+2022-10-19 18:22:36   Info  Entered Captcha is 1111
+2022-10-19 18:22:36   Info  Results cleared for next execution
+2022-10-19 18:22:36   Info  Clicked on Show Details
+2022-10-19 18:22:44   Info  Entered IEC Number
+2022-10-19 18:22:44   Info  Entered IFSC Number
+2022-10-19 18:22:44   Info  Entered Start Date
+2022-10-19 18:22:44   Info  Entered End Date
+2022-10-19 18:22:45   Info  Entered Captcha is 1111
+2022-10-19 18:22:45   Info  Results cleared for next execution
+2022-10-19 18:22:45   Info  Clicked on Show Details
+2022-10-19 18:22:35   Info  The loop did not finish within the limit.
+2022-10-19 18:22:35   Info  next record
+2022-10-19 18:22:01   Info  Record Entered Successfully
+2022-10-19 18:23:04   Info  Entered IEC Number
+2022-10-19 18:23:04   Info  Entered IFSC Number
+2022-10-19 18:23:04   Info  Entered Start Date
+2022-10-19 18:23:04   Info  Entered End Date
+2022-10-19 18:23:05   Info  Entered Captcha is 11111
+2022-10-19 18:23:05   Info  Results cleared for next execution
+2022-10-19 18:23:05   Info  Clicked on Show Details
+2022-10-19 18:23:28   Info  Entered IEC Number
+2022-10-19 18:23:28   Info  Entered IFSC Number
+2022-10-19 18:23:28   Info  Entered Start Date
+2022-10-19 18:23:28   Info  Entered End Date
+2022-10-19 18:23:29   Info  Entered Captcha is 1111
+2022-10-19 18:23:29   Info  Results cleared for next execution
+2022-10-19 18:23:29   Info  Clicked on Show Details
+2022-10-19 18:23:04   Info  The loop did not finish within the limit.
+2022-10-19 18:23:04   Info  next record
+2022-10-19 18:22:01   Info  Record Entered Successfully
+2022-10-19 18:23:48   Info  Entered IEC Number
+2022-10-19 18:23:48   Info  Entered IFSC Number
+2022-10-19 18:23:48   Info  Entered Start Date
+2022-10-19 18:23:48   Info  Entered End Date
+2022-10-19 18:23:49   Info  Entered Captcha is 8hewe
+2022-10-19 18:23:49   Info  Results cleared for next execution
+2022-10-19 18:23:49   Info  Clicked on Show Details
+2022-10-19 18:24:01   Info  04
+2022-10-19 18:24:01   Info  APRIL
+2022-10-19 18:24:01   Info  2018
+2022-10-19 18:24:01   Info  First Page Captured Successfully
+2022-10-19 18:24:01   Info  2 count present
+2022-10-19 18:24:01   Info  110008258
+2022-10-19 18:24:01   Info  Clicking print for 0 record
+2022-10-19 18:24:22   Info  Printed at c:\Users\sahana.savur\Downloads\EBRC_Process\EBRC_Process\output\output\2018\APRIL\0_110008258_0700007172_CITI0000004_ 01.04.2018.pdf Successfully
+2022-10-19 18:24:01   Info  Saved PDF's Successfully
+2022-10-19 18:24:01   Info  Closed browsers Successfully
+2022-10-19 18:22:01   Info  Record Entered Successfully
+2022-10-19 18:24:57   Info  Entered IEC Number
+2022-10-19 18:24:57   Info  Entered IFSC Number
+2022-10-19 18:24:57   Info  Entered Start Date
+2022-10-19 18:24:57   Info  Entered End Date

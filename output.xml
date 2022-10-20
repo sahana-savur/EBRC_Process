@@ -1,0 +1,3315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221019 14:22:45.022" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="c:\Users\Sandeep Bhat\Desktop\RoboCorp\test\EBRC_Details_Enter\tasks.robot">
+<test id="s1-t1" name="EBRC- Create the folders according to dates and save the PDFs in corresponding folders" line="42">
+<kw name="Reading the Sample Worksheet" library="readinput_ExcelFile">
+<var>${Start_DATE}</var>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${input_Workbook_path}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20221019 14:22:49.945" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001BCC35009A0&gt;</msg>
+<status status="PASS" starttime="20221019 14:22:49.937" endtime="20221019 14:22:49.945"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>@{table}</var>
+<arg>name=Sheet1</arg>
+<arg>header=True</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221019 14:22:49.945" level="INFO">Created table: Table(columns=['Start Date', 'End Date'], rows=12)</msg>
+<msg timestamp="20221019 14:22:49.945" level="INFO">@{table} = [ {'Start Date': '01.01.2018', 'End Date': '31.01.2018'} | {'Start Date': '01.02.2018', 'End Date': '28.02.2018'} | {'Start Date': '01.03.2018', 'End Date': '31.03.2018'} | {'Start Date': '01.04.2018'...</msg>
+<status status="PASS" starttime="20221019 14:22:49.945" endtime="20221019 14:22:49.945"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:22:52.964" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:22:49.945" endtime="20221019 14:22:52.964"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20221019 14:22:52.964" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001BCC35009A0&gt;</msg>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:52.964"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${table}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.964" level="INFO">[{'Start Date': '01.01.2018', 'End Date': '31.01.2018'}, {'Start Date': '01.02.2018', 'End Date': '28.02.2018'}, {'Start Date': '01.03.2018', 'End Date': '31.03.2018'}, {'Start Date': '01.04.2018', 'End Date': '30.04.2018'}, {'Start Date': '01.05.2018', 'End Date': '31.05.2018'}, {'Start Date': '01.06.2018', 'End Date': '30.06.2018'}, {'Start Date': '01.07.2018', 'End Date': '31.07.2018'}, {'Start Date': '01.08.2018', 'End Date': '31.08.2018'}, {'Start Date': '01.09.2018', 'End Date': '30.09.2018'}, {'Start Date': '01.10.2018', 'End Date': '31.10.2018'}, {'Start Date': '01.11.2018', 'End Date': '30.11.2018'}, {'Start Date': '01.12.2018', 'End Date': '31.12.2018'}]</msg>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:52.964"/>
+</kw>
+<return>
+<value>${table}</value>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:52.964"/>
+</return>
+<msg timestamp="20221019 14:22:52.964" level="INFO">${Start_DATE} = [{'Start Date': '01.01.2018', 'End Date': '31.01.2018'}, {'Start Date': '01.02.2018', 'End Date': '28.02.2018'}, {'Start Date': '01.03.2018', 'End Date': '31.03.2018'}, {'Start Date': '01.04.2018', 'E...</msg>
+<status status="PASS" starttime="20221019 14:22:49.937" endtime="20221019 14:22:52.964"/>
+</kw>
+<kw name="Get Start date and creating folders">
+<arg>${Start_DATE}</arg>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{date}</value>
+<iter>
+<var name="${element}">{'Start Date': '01.01.2018', 'End Date': '31.01.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.964" level="INFO">{'Start Date': '01.01.2018', 'End Date': '31.01.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:52.964"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:52.964"/>
+</return>
+<msg timestamp="20221019 14:22:52.964" level="INFO">${value} = 01.01.2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.971" level="INFO">01.01.2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.971" level="INFO">01.01.2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:52.971" level="INFO">${start_date} = 01.01.2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:52.971" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.971" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:52.971" level="INFO">${startdate_Substring_Month} = 01</msg>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.971" level="INFO">01</msg>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.971"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.979"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:52.989" level="INFO">Full name:  January</msg>
+<msg timestamp="20221019 14:22:52.989" level="INFO">${month_name} = January</msg>
+<status status="PASS" starttime="20221019 14:22:52.979" endtime="20221019 14:22:52.989"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:52.990" level="INFO">${MONTH_NAME} = JANUARY</msg>
+<status status="PASS" starttime="20221019 14:22:52.990" endtime="20221019 14:22:52.991"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:52.991" endtime="20221019 14:22:52.992"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:52.971" endtime="20221019 14:22:52.992"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:52.992"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.02.2018', 'End Date': '28.02.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.993" level="INFO">{'Start Date': '01.02.2018', 'End Date': '28.02.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:52.993" endtime="20221019 14:22:52.994"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:52.994" endtime="20221019 14:22:52.994"/>
+</return>
+<msg timestamp="20221019 14:22:52.995" level="INFO">${value} = 01.02.2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.994" endtime="20221019 14:22:52.995"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.995" level="INFO">01.02.2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.995" endtime="20221019 14:22:52.995"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.996" level="INFO">01.02.2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.996" endtime="20221019 14:22:52.997"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:52.997" level="INFO">${start_date} = 01.02.2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.997" endtime="20221019 14:22:52.997"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:52.998" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.997" endtime="20221019 14:22:52.998"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.998" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:52.998" endtime="20221019 14:22:52.998"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:52.999" level="INFO">${startdate_Substring_Month} = 02</msg>
+<status status="PASS" starttime="20221019 14:22:52.998" endtime="20221019 14:22:52.999"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:52.999" level="INFO">02</msg>
+<status status="PASS" starttime="20221019 14:22:52.999" endtime="20221019 14:22:52.999"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.000" endtime="20221019 14:22:53.001"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.001" endtime="20221019 14:22:53.002"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.002" level="INFO">Full name:  February</msg>
+<msg timestamp="20221019 14:22:53.003" level="INFO">${month_name} = February</msg>
+<status status="PASS" starttime="20221019 14:22:53.002" endtime="20221019 14:22:53.003"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.003" level="INFO">${MONTH_NAME} = FEBRUARY</msg>
+<status status="PASS" starttime="20221019 14:22:53.003" endtime="20221019 14:22:53.003"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.003" endtime="20221019 14:22:53.004"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:52.996" endtime="20221019 14:22:53.005"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:52.993" endtime="20221019 14:22:53.005"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.03.2018', 'End Date': '31.03.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.006" level="INFO">{'Start Date': '01.03.2018', 'End Date': '31.03.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.005" endtime="20221019 14:22:53.006"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.006" endtime="20221019 14:22:53.007"/>
+</return>
+<msg timestamp="20221019 14:22:53.007" level="INFO">${value} = 01.03.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.006" endtime="20221019 14:22:53.007"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.007" level="INFO">01.03.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.007" endtime="20221019 14:22:53.007"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.008" level="INFO">01.03.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.008" endtime="20221019 14:22:53.009"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.009" level="INFO">${start_date} = 01.03.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.009" endtime="20221019 14:22:53.009"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.010" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.010" endtime="20221019 14:22:53.010"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.010" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.010" endtime="20221019 14:22:53.011"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.012" level="INFO">${startdate_Substring_Month} = 03</msg>
+<status status="PASS" starttime="20221019 14:22:53.011" endtime="20221019 14:22:53.012"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.012" level="INFO">03</msg>
+<status status="PASS" starttime="20221019 14:22:53.012" endtime="20221019 14:22:53.012"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.012" endtime="20221019 14:22:53.014"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.014" endtime="20221019 14:22:53.016"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.016" level="INFO">Full name:  March</msg>
+<msg timestamp="20221019 14:22:53.016" level="INFO">${month_name} = March</msg>
+<status status="PASS" starttime="20221019 14:22:53.016" endtime="20221019 14:22:53.016"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.017" level="INFO">${MONTH_NAME} = MARCH</msg>
+<status status="PASS" starttime="20221019 14:22:53.017" endtime="20221019 14:22:53.017"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.017" endtime="20221019 14:22:53.018"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.008" endtime="20221019 14:22:53.018"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.005" endtime="20221019 14:22:53.018"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.04.2018', 'End Date': '30.04.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.019" level="INFO">{'Start Date': '01.04.2018', 'End Date': '30.04.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.019" endtime="20221019 14:22:53.019"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</return>
+<msg timestamp="20221019 14:22:53.020" level="INFO">${value} = 01.04.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.020" level="INFO">01.04.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.020" level="INFO">01.04.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.020" level="INFO">${start_date} = 01.04.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.020" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.020" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.020" level="INFO">${startdate_Substring_Month} = 04</msg>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.020" level="INFO">04</msg>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.020"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.028" level="INFO">Full name:  April</msg>
+<msg timestamp="20221019 14:22:53.028" level="INFO">${month_name} = April</msg>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.028" level="INFO">${MONTH_NAME} = APRIL</msg>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.020" endtime="20221019 14:22:53.028"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.019" endtime="20221019 14:22:53.028"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.05.2018', 'End Date': '31.05.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.028" level="INFO">{'Start Date': '01.05.2018', 'End Date': '31.05.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</return>
+<msg timestamp="20221019 14:22:53.028" level="INFO">${value} = 01.05.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.028" level="INFO">01.05.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.028" level="INFO">01.05.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.028" level="INFO">${start_date} = 01.05.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.028"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.036" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.036"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.036" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.036" endtime="20221019 14:22:53.036"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.036" level="INFO">${startdate_Substring_Month} = 05</msg>
+<status status="PASS" starttime="20221019 14:22:53.036" endtime="20221019 14:22:53.036"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.036" level="INFO">05</msg>
+<status status="PASS" starttime="20221019 14:22:53.036" endtime="20221019 14:22:53.036"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.036" endtime="20221019 14:22:53.036"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.036" endtime="20221019 14:22:53.036"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.036" level="INFO">Full name:  May</msg>
+<msg timestamp="20221019 14:22:53.036" level="INFO">${month_name} = May</msg>
+<status status="PASS" starttime="20221019 14:22:53.036" endtime="20221019 14:22:53.036"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.036" level="INFO">${MONTH_NAME} = MAY</msg>
+<status status="PASS" starttime="20221019 14:22:53.036" endtime="20221019 14:22:53.036"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.036" endtime="20221019 14:22:53.036"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.044"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.028" endtime="20221019 14:22:53.044"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.06.2018', 'End Date': '30.06.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.044" level="INFO">{'Start Date': '01.06.2018', 'End Date': '30.06.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</return>
+<msg timestamp="20221019 14:22:53.044" level="INFO">${value} = 01.06.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.044" level="INFO">01.06.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.044" level="INFO">01.06.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.044" level="INFO">${start_date} = 01.06.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.044" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.044" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.044" level="INFO">${startdate_Substring_Month} = 06</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.044" level="INFO">06</msg>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.044"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.052"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.052"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.052" level="INFO">Full name:  June</msg>
+<msg timestamp="20221019 14:22:53.052" level="INFO">${month_name} = June</msg>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.052"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.052" level="INFO">${MONTH_NAME} = JUNE</msg>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.052"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.052"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.052"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.044" endtime="20221019 14:22:53.052"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.07.2018', 'End Date': '31.07.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.052" level="INFO">{'Start Date': '01.07.2018', 'End Date': '31.07.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.052"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.052"/>
+</return>
+<msg timestamp="20221019 14:22:53.052" level="INFO">${value} = 01.07.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.052"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.052" level="INFO">01.07.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.052"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.060" level="INFO">01.07.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.060"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.060" level="INFO">${start_date} = 01.07.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.060"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.060" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.060"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.060" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.060"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.060" level="INFO">${startdate_Substring_Month} = 07</msg>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.060"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.060" level="INFO">07</msg>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.060"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.060"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.060"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.060" level="INFO">Full name:  July</msg>
+<msg timestamp="20221019 14:22:53.068" level="INFO">${month_name} = July</msg>
+<status status="PASS" starttime="20221019 14:22:53.060" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.068" level="INFO">${MONTH_NAME} = JULY</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.068"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.052" endtime="20221019 14:22:53.068"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.08.2018', 'End Date': '31.08.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.068" level="INFO">{'Start Date': '01.08.2018', 'End Date': '31.08.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</return>
+<msg timestamp="20221019 14:22:53.068" level="INFO">${value} = 01.08.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.068" level="INFO">01.08.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.068" level="INFO">01.08.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.068" level="INFO">${start_date} = 01.08.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.068" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.068" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.068"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.076" level="INFO">${startdate_Substring_Month} = 08</msg>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.076"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.076" level="INFO">08</msg>
+<status status="PASS" starttime="20221019 14:22:53.076" endtime="20221019 14:22:53.076"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.076" endtime="20221019 14:22:53.076"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.076" endtime="20221019 14:22:53.076"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.076" level="INFO">Full name:  August</msg>
+<msg timestamp="20221019 14:22:53.076" level="INFO">${month_name} = August</msg>
+<status status="PASS" starttime="20221019 14:22:53.076" endtime="20221019 14:22:53.076"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.076" level="INFO">${MONTH_NAME} = AUGUST</msg>
+<status status="PASS" starttime="20221019 14:22:53.076" endtime="20221019 14:22:53.076"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.076" endtime="20221019 14:22:53.076"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.076"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.068" endtime="20221019 14:22:53.076"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.09.2018', 'End Date': '30.09.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.076" level="INFO">{'Start Date': '01.09.2018', 'End Date': '30.09.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.076" endtime="20221019 14:22:53.076"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</return>
+<msg timestamp="20221019 14:22:53.084" level="INFO">${value} = 01.09.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.084" level="INFO">01.09.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.084" level="INFO">01.09.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.084" level="INFO">${start_date} = 01.09.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.084" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.084" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.084" level="INFO">${startdate_Substring_Month} = 09</msg>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.084" level="INFO">09</msg>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.084"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.092"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.092" level="INFO">Full name:  September</msg>
+<msg timestamp="20221019 14:22:53.092" level="INFO">${month_name} = September</msg>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.092"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.092" level="INFO">${MONTH_NAME} = SEPTEMBER</msg>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.092"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.092"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.084" endtime="20221019 14:22:53.092"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.076" endtime="20221019 14:22:53.092"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.10.2018', 'End Date': '31.10.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.092" level="INFO">{'Start Date': '01.10.2018', 'End Date': '31.10.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.092"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.092"/>
+</return>
+<msg timestamp="20221019 14:22:53.092" level="INFO">${value} = 01.10.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.092"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.092" level="INFO">01.10.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.092"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.100" level="INFO">01.10.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.100" level="INFO">${start_date} = 01.10.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.100" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.100" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.100" level="INFO">${startdate_Substring_Month} = 10</msg>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.100" level="INFO">10</msg>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.100" level="INFO">Full name:  October</msg>
+<msg timestamp="20221019 14:22:53.100" level="INFO">${month_name} = October</msg>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.100" level="INFO">${MONTH_NAME} = OCTOBER</msg>
+<status status="PASS" starttime="20221019 14:22:53.100" endtime="20221019 14:22:53.100"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.108"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.092" endtime="20221019 14:22:53.108"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.11.2018', 'End Date': '30.11.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.108" level="INFO">{'Start Date': '01.11.2018', 'End Date': '30.11.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</return>
+<msg timestamp="20221019 14:22:53.108" level="INFO">${value} = 01.11.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.108" level="INFO">01.11.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.108" level="INFO">01.11.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.108" level="INFO">${start_date} = 01.11.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.108" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.108" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.108" level="INFO">${startdate_Substring_Month} = 11</msg>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.108"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.116" level="INFO">11</msg>
+<status status="PASS" starttime="20221019 14:22:53.116" endtime="20221019 14:22:53.116"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.116" endtime="20221019 14:22:53.116"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.116" endtime="20221019 14:22:53.116"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.116" level="INFO">Full name:  November</msg>
+<msg timestamp="20221019 14:22:53.116" level="INFO">${month_name} = November</msg>
+<status status="PASS" starttime="20221019 14:22:53.116" endtime="20221019 14:22:53.116"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.116" level="INFO">${MONTH_NAME} = NOVEMBER</msg>
+<status status="PASS" starttime="20221019 14:22:53.116" endtime="20221019 14:22:53.116"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.116" endtime="20221019 14:22:53.116"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.116"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.108" endtime="20221019 14:22:53.116"/>
+</iter>
+<iter>
+<var name="${element}">{'Start Date': '01.12.2018', 'End Date': '31.12.2018'}</var>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.116" level="INFO">{'Start Date': '01.12.2018', 'End Date': '31.12.2018'}</msg>
+<status status="PASS" starttime="20221019 14:22:53.116" endtime="20221019 14:22:53.116"/>
+</kw>
+<kw name="Print the start date">
+<var>${value}</var>
+<arg>${element}</arg>
+<return>
+<value>${row}[Start Date]</value>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</return>
+<msg timestamp="20221019 14:22:53.124" level="INFO">${value} = 01.12.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.124" level="INFO">01.12.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Creating Folders with Year and inside Month Folders">
+<arg>${value}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.124" level="INFO">01.12.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${start_date}</var>
+<arg>${element}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:22:53.124" level="INFO">${start_date} = 01.12.2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_year}</var>
+<arg>${start_date}</arg>
+<arg>6</arg>
+<arg>10</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.124" level="INFO">${startdate_Substring_year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_year}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.124" level="INFO">2018</msg>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${startdate_Substring_Month}</var>
+<arg>${start_date}</arg>
+<arg>3</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20221019 14:22:53.124" level="INFO">${startdate_Substring_Month} = 12</msg>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${startdate_Substring_Month}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:22:53.124" level="INFO">12</msg>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.124"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.132"/>
+</kw>
+<kw name="Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${startdate_Substring_Month}</arg>
+<msg timestamp="20221019 14:22:53.132" level="INFO">Full name:  December</msg>
+<msg timestamp="20221019 14:22:53.132" level="INFO">${month_name} = December</msg>
+<status status="PASS" starttime="20221019 14:22:53.132" endtime="20221019 14:22:53.132"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${MONTH_NAME}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:22:53.132" level="INFO">${MONTH_NAME} = DECEMBER</msg>
+<status status="PASS" starttime="20221019 14:22:53.132" endtime="20221019 14:22:53.132"/>
+</kw>
+<kw name="Create Directory" library="RPA.FileSystem">
+<arg>${OUTPUT_DIR}${/}output${/}${startdate_Substring_year}${/}${MONTH_NAME}</arg>
+<doc>Creates a directory and (optionally) non-existing parent directories.</doc>
+<status status="PASS" starttime="20221019 14:22:53.132" endtime="20221019 14:22:53.132"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.124" endtime="20221019 14:22:53.132"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:53.116" endtime="20221019 14:22:53.132"/>
+</iter>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:53.132"/>
+</for>
+<status status="PASS" starttime="20221019 14:22:52.964" endtime="20221019 14:22:53.132"/>
+</kw>
+<status status="PASS" starttime="20221019 14:22:49.937" endtime="20221019 14:22:53.132"/>
+</test>
+<test id="s1-t2" name="Open EBRC Portal And Filling Details" line="46">
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>http://dgftebrc.nic.in:8100/BRCQueryTrade/index.jsp</arg>
+<arg>maximized=True#loop</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20221019 14:22:53.140" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221019 14:22:53.161" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20221019 14:22:56.874" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221019 14:22:58.001" level="INFO">Created Chrome browser with arguments: --start-maximized --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20221019 14:22:58.009" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20221019 14:22:58.009" level="INFO">Opening url 'http://dgftebrc.nic.in:8100/BRCQueryTrade/index.jsp'</msg>
+<status status="PASS" starttime="20221019 14:22:53.132" endtime="20221019 14:22:59.109"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:23:09.128" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20221019 14:22:59.110" endtime="20221019 14:23:09.128"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:23:09.128" level="INFO">${now} = 2022-10-19 14:23:09</msg>
+<status status="PASS" starttime="20221019 14:23:09.128" endtime="20221019 14:23:09.128"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${now}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:23:09.128" level="INFO">2022-10-19 14:23:09</msg>
+<status status="PASS" starttime="20221019 14:23:09.128" endtime="20221019 14:23:09.128"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>This should pass</arg>
+<status status="PASS" starttime="20221019 14:23:09.128" endtime="20221019 14:23:09.128"/>
+</kw>
+<kw name="Get the list of people from the Excel file">
+<var>${details}</var>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:23:09.136" level="INFO">${now} = 2022-10-19 14:23:09</msg>
+<status status="PASS" starttime="20221019 14:23:09.136" endtime="20221019 14:23:09.136"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>SampleData.xlsx</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20221019 14:23:09.144" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001BCC3BDCF40&gt;</msg>
+<status status="PASS" starttime="20221019 14:23:09.136" endtime="20221019 14:23:09.144"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Excel File Read Successfully</arg>
+<status status="PASS" starttime="20221019 14:23:09.144" endtime="20221019 14:23:09.144"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${table}</var>
+<arg>header=True</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221019 14:23:09.144" level="INFO">Created table: Table(columns=['Start Date', 'End Date'], rows=12)</msg>
+<msg timestamp="20221019 14:23:09.144" level="INFO">${table} = Table(columns=['Start Date', 'End Date'], rows=12)</msg>
+<status status="PASS" starttime="20221019 14:23:09.144" endtime="20221019 14:23:09.144"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20221019 14:23:09.152" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001BCC3BDCF40&gt;</msg>
+<status status="PASS" starttime="20221019 14:23:09.144" endtime="20221019 14:23:09.152"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Excel File Closed Successfully</arg>
+<status status="PASS" starttime="20221019 14:23:09.152" endtime="20221019 14:23:09.152"/>
+</kw>
+<return>
+<value>${table}</value>
+<status status="PASS" starttime="20221019 14:23:09.152" endtime="20221019 14:23:09.152"/>
+</return>
+<msg timestamp="20221019 14:23:09.152" level="INFO">${details} = Table(columns=['Start Date', 'End Date'], rows=12)</msg>
+<status status="PASS" starttime="20221019 14:23:09.128" endtime="20221019 14:23:09.152"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Input Excel File Read Complete</arg>
+<status status="PASS" starttime="20221019 14:23:09.152" endtime="20221019 14:23:09.152"/>
+</kw>
+<for flavor="IN">
+<var>${detail}</var>
+<value>@{details}</value>
+<iter>
+<var name="${detail}">{'Start Date': '01.01.2018', 'End Date': '31.01.2018'}</var>
+<kw name="Input form dialog in browser">
+<arg>${detail}</arg>
+<arg>${IEC}</arg>
+<arg>${IFSC}</arg>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:23:09.152" level="INFO">${now} = 2022-10-19 14:23:09</msg>
+<status status="PASS" starttime="20221019 14:23:09.152" endtime="20221019 14:23:09.152"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='iec']</arg>
+<arg>${IEC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:09.160" level="INFO">Typing text '0700007172' into text field '//input[@name='iec']'.</msg>
+<status status="PASS" starttime="20221019 14:23:09.152" endtime="20221019 14:23:09.243"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IEC Number</arg>
+<status status="PASS" starttime="20221019 14:23:09.244" endtime="20221019 14:23:09.246"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='ifsc']</arg>
+<arg>${IFSC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:09.247" level="INFO">Typing text 'CITI0000004' into text field '//input[@name='ifsc']'.</msg>
+<status status="PASS" starttime="20221019 14:23:09.246" endtime="20221019 14:23:09.311"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IFSC Number</arg>
+<status status="PASS" starttime="20221019 14:23:09.311" endtime="20221019 14:23:09.319"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='fdate']</arg>
+<arg>${detail}[Start Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:09.319" level="INFO">Typing text '01.01.2018' into text field '//input[@name='fdate']'.</msg>
+<status status="PASS" starttime="20221019 14:23:09.319" endtime="20221019 14:23:09.383"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Start Date</arg>
+<status status="PASS" starttime="20221019 14:23:09.383" endtime="20221019 14:23:09.391"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='tdate']</arg>
+<arg>${detail}[End Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:09.391" level="INFO">Typing text '31.01.2018' into text field '//input[@name='tdate']'.</msg>
+<status status="PASS" starttime="20221019 14:23:09.391" endtime="20221019 14:23:09.456"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered End Date</arg>
+<status status="PASS" starttime="20221019 14:23:09.456" endtime="20221019 14:23:09.456"/>
+</kw>
+<kw name="Enter Captcha">
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:23:09.464" level="INFO">${now} = 2022-10-19 14:23:09</msg>
+<status status="PASS" starttime="20221019 14:23:09.456" endtime="20221019 14:23:09.464"/>
+</kw>
+<kw name="Add heading" library="RPA.Dialogs">
+<arg>Please Enter the Captcha</arg>
+<doc>Add a centered heading text element</doc>
+<status status="PASS" starttime="20221019 14:23:09.464" endtime="20221019 14:23:09.464"/>
+</kw>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>text</arg>
+<arg>label=captcha</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20221019 14:23:09.464" endtime="20221019 14:23:09.464"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:23:11.476" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:23:09.464" endtime="20221019 14:23:11.476"/>
+</kw>
+<kw name="Get Value From User" library="Dialogs">
+<var>${result}</var>
+<arg>Please Enter the Captcha</arg>
+<doc>Pauses execution and asks user to input a value.</doc>
+<msg timestamp="20221019 14:23:16.143" level="INFO">${result} = mmmm</msg>
+<status status="PASS" starttime="20221019 14:23:11.476" endtime="20221019 14:23:16.143"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:23:16.143" level="INFO">mmmm</msg>
+<status status="PASS" starttime="20221019 14:23:16.143" endtime="20221019 14:23:16.143"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Captcha is ${result}</arg>
+<status status="PASS" starttime="20221019 14:23:16.143" endtime="20221019 14:23:16.151"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='captext']</arg>
+<arg>${result}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:16.151" level="INFO">Typing text 'mmmm' into text field '//input[@name='captext']'.</msg>
+<status status="PASS" starttime="20221019 14:23:16.151" endtime="20221019 14:23:16.216"/>
+</kw>
+<kw name="Clear elements" library="RPA.Dialogs">
+<doc>Remove all previously defined elements and start from a clean state</doc>
+<status status="PASS" starttime="20221019 14:23:16.216" endtime="20221019 14:23:16.216"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Results cleared for next execution</arg>
+<status status="PASS" starttime="20221019 14:23:16.224" endtime="20221019 14:23:16.224"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>//input[@name='B1']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:16.224" level="INFO">Clicking button '//input[@name='B1']'.</msg>
+<status status="PASS" starttime="20221019 14:23:16.224" endtime="20221019 14:23:16.718"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Clicked on Show Details</arg>
+<status status="PASS" starttime="20221019 14:23:16.719" endtime="20221019 14:23:16.720"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:23:19.721" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:23:16.721" endtime="20221019 14:23:19.721"/>
+</kw>
+<status status="PASS" starttime="20221019 14:23:09.456" endtime="20221019 14:23:19.721"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${sample_text}</var>
+<arg>xpath://b//font[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:19.745" level="INFO">${sample_text} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:23:19.721" endtime="20221019 14:23:19.745"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${sample_text_converted}</var>
+<arg>${sample_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:23:19.745" level="INFO">${sample_text_converted} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:23:19.745" endtime="20221019 14:23:19.745"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:23:21.756" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:23:19.745" endtime="20221019 14:23:21.756"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${sample_text_converted.strip()}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:23:21.756" level="INFO">Length is 23</msg>
+<status status="PASS" starttime="20221019 14:23:21.756" endtime="20221019 14:23:21.756"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${sample_text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:23:21.756" level="INFO">Length is 23</msg>
+<status status="PASS" starttime="20221019 14:23:21.756" endtime="20221019 14:23:21.763"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${expected_text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:23:21.763" level="INFO">Length is 20</msg>
+<status status="PASS" starttime="20221019 14:23:21.763" endtime="20221019 14:23:21.763"/>
+</kw>
+<try>
+<branch type="TRY">
+<while condition="&quot;${expected_text}[2]&quot;!=&quot;${sample_text_converted}[2]&quot;" limit="1">
+<iter>
+<kw name="Re Enter Details">
+<arg>${detail}</arg>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:23:21.763" level="INFO">${now} = 2022-10-19 14:23:21</msg>
+<status status="PASS" starttime="20221019 14:23:21.763" endtime="20221019 14:23:21.763"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='iec']</arg>
+<arg>${IEC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:21.763" level="INFO">Typing text '0700007172' into text field '//input[@name='iec']'.</msg>
+<status status="PASS" starttime="20221019 14:23:21.763" endtime="20221019 14:23:21.837"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IEC Number</arg>
+<status status="PASS" starttime="20221019 14:23:21.837" endtime="20221019 14:23:21.837"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='ifsc']</arg>
+<arg>${IFSC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:21.837" level="INFO">Typing text 'CITI0000004' into text field '//input[@name='ifsc']'.</msg>
+<status status="PASS" starttime="20221019 14:23:21.837" endtime="20221019 14:23:21.901"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IFSC Number</arg>
+<status status="PASS" starttime="20221019 14:23:21.901" endtime="20221019 14:23:21.901"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='fdate']</arg>
+<arg>${detail}[Start Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:21.909" level="INFO">Typing text '01.01.2018' into text field '//input[@name='fdate']'.</msg>
+<status status="PASS" starttime="20221019 14:23:21.901" endtime="20221019 14:23:21.973"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Start Date</arg>
+<status status="PASS" starttime="20221019 14:23:21.973" endtime="20221019 14:23:21.973"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='tdate']</arg>
+<arg>${detail}[End Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:23:21.973" level="INFO">Typing text '31.01.2018' into text field '//input[@name='tdate']'.</msg>
+<status status="PASS" starttime="20221019 14:23:21.973" endtime="20221019 14:23:22.037"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered End Date</arg>
+<status status="PASS" starttime="20221019 14:23:22.037" endtime="20221019 14:23:22.037"/>
+</kw>
+<status status="PASS" starttime="20221019 14:23:21.763" endtime="20221019 14:23:22.037"/>
+</kw>
+<kw name="Enter Captcha">
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:23:22.037" level="INFO">${now} = 2022-10-19 14:23:22</msg>
+<status status="PASS" starttime="20221019 14:23:22.037" endtime="20221019 14:23:22.045"/>
+</kw>
+<kw name="Add heading" library="RPA.Dialogs">
+<arg>Please Enter the Captcha</arg>
+<doc>Add a centered heading text element</doc>
+<status status="PASS" starttime="20221019 14:23:22.045" endtime="20221019 14:23:22.045"/>
+</kw>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>text</arg>
+<arg>label=captcha</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20221019 14:23:22.045" endtime="20221019 14:23:22.045"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:23:24.055" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:23:22.045" endtime="20221019 14:23:24.055"/>
+</kw>
+<kw name="Get Value From User" library="Dialogs">
+<var>${result}</var>
+<arg>Please Enter the Captcha</arg>
+<doc>Pauses execution and asks user to input a value.</doc>
+<msg timestamp="20221019 14:24:40.121" level="INFO">${result} = vvvvv</msg>
+<status status="PASS" starttime="20221019 14:23:24.055" endtime="20221019 14:24:40.121"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:24:40.121" level="INFO">vvvvv</msg>
+<status status="PASS" starttime="20221019 14:24:40.121" endtime="20221019 14:24:40.121"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Captcha is ${result}</arg>
+<status status="PASS" starttime="20221019 14:24:40.121" endtime="20221019 14:24:40.121"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='captext']</arg>
+<arg>${result}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:24:40.121" level="INFO">Typing text 'vvvvv' into text field '//input[@name='captext']'.</msg>
+<status status="PASS" starttime="20221019 14:24:40.121" endtime="20221019 14:24:40.193"/>
+</kw>
+<kw name="Clear elements" library="RPA.Dialogs">
+<doc>Remove all previously defined elements and start from a clean state</doc>
+<status status="PASS" starttime="20221019 14:24:40.193" endtime="20221019 14:24:40.194"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Results cleared for next execution</arg>
+<status status="PASS" starttime="20221019 14:24:40.194" endtime="20221019 14:24:40.196"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>//input[@name='B1']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221019 14:24:40.197" level="INFO">Clicking button '//input[@name='B1']'.</msg>
+<status status="PASS" starttime="20221019 14:24:40.196" endtime="20221019 14:24:41.214"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Clicked on Show Details</arg>
+<status status="PASS" starttime="20221019 14:24:41.214" endtime="20221019 14:24:41.214"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:24:44.219" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:24:41.214" endtime="20221019 14:24:44.219"/>
+</kw>
+<status status="PASS" starttime="20221019 14:23:22.037" endtime="20221019 14:24:44.219"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${sample_text}</var>
+<arg>xpath://b//font[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:24:44.244" level="INFO">${sample_text} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:24:44.219" endtime="20221019 14:24:44.244"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${sample_text_converted}</var>
+<arg>${sample_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:24:44.244" level="INFO">${sample_text_converted} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:24:44.244" endtime="20221019 14:24:44.244"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${captcha_counter}</var>
+<arg>${captcha_counter}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:24:44.244" level="INFO">${captcha_counter} = 2</msg>
+<status status="PASS" starttime="20221019 14:24:44.244" endtime="20221019 14:24:44.244"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${message}</var>
+<arg>Pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221019 14:24:44.244" level="INFO">${message} = Pass</msg>
+<status status="PASS" starttime="20221019 14:24:44.244" endtime="20221019 14:24:44.244"/>
+</kw>
+<status status="PASS" starttime="20221019 14:23:21.763" endtime="20221019 14:24:44.244"/>
+</iter>
+<status status="FAIL" starttime="20221019 14:23:21.763" endtime="20221019 14:24:44.244"/>
+</while>
+<status status="FAIL" starttime="20221019 14:23:21.763" endtime="20221019 14:24:44.244"/>
+</branch>
+<branch type="EXCEPT" pattern_type="start">
+<pattern>WHILE loop was aborted</pattern>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>The loop did not finish within the limit.</arg>
+<status status="PASS" starttime="20221019 14:24:44.252" endtime="20221019 14:24:44.252"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${message}</var>
+<arg>Fail</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221019 14:24:44.252" level="INFO">${message} = Fail</msg>
+<status status="PASS" starttime="20221019 14:24:44.252" endtime="20221019 14:24:44.252"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>The loop did not finish within the limit.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:24:44.252" level="INFO">The loop did not finish within the limit.</msg>
+<status status="PASS" starttime="20221019 14:24:44.252" endtime="20221019 14:24:44.252"/>
+</kw>
+<status status="PASS" starttime="20221019 14:24:44.244" endtime="20221019 14:24:44.252"/>
+</branch>
+<status status="PASS" starttime="20221019 14:23:21.763" endtime="20221019 14:24:44.252"/>
+</try>
+<if>
+<branch type="IF" condition="'${message}' == &quot;Pass&quot;">
+<kw name="Entering Other Details">
+<arg>${detail}</arg>
+<arg>${now}</arg>
+<status status="NOT RUN" starttime="20221019 14:24:44.252" endtime="20221019 14:24:44.252"/>
+</kw>
+<status status="NOT RUN" starttime="20221019 14:24:44.252" endtime="20221019 14:24:44.252"/>
+</branch>
+<branch type="ELSE">
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>next record</arg>
+<status status="PASS" starttime="20221019 14:24:44.252" endtime="20221019 14:24:44.252"/>
+</kw>
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221019 14:24:44.252" endtime="20221019 14:24:46.434"/>
+</kw>
+<status status="PASS" starttime="20221019 14:24:44.252" endtime="20221019 14:24:46.434"/>
+</branch>
+<status status="PASS" starttime="20221019 14:24:44.252" endtime="20221019 14:24:46.434"/>
+</if>
+<status status="PASS" starttime="20221019 14:23:09.152" endtime="20221019 14:24:46.434"/>
+</kw>
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>http://dgftebrc.nic.in:8100/BRCQueryTrade/index.jsp</arg>
+<arg>maximized=True</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20221019 14:24:46.434" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221019 14:24:46.434" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20221019 14:24:49.716" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221019 14:24:50.797" level="INFO">Created Chrome browser with arguments: --start-maximized --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20221019 14:24:50.798" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20221019 14:24:50.798" level="INFO">Opening url 'http://dgftebrc.nic.in:8100/BRCQueryTrade/index.jsp'</msg>
+<status status="PASS" starttime="20221019 14:24:46.434" endtime="20221019 14:24:51.748"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Record Entered Successfully</arg>
+<status status="PASS" starttime="20221019 14:24:51.748" endtime="20221019 14:24:51.748"/>
+</kw>
+<status status="PASS" starttime="20221019 14:23:09.152" endtime="20221019 14:24:51.748"/>
+</iter>
+<iter>
+<var name="${detail}">{'Start Date': '01.02.2018', 'End Date': '28.02.2018'}</var>
+<kw name="Input form dialog in browser">
+<arg>${detail}</arg>
+<arg>${IEC}</arg>
+<arg>${IFSC}</arg>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:24:51.748" level="INFO">${now} = 2022-10-19 14:24:51</msg>
+<status status="PASS" starttime="20221019 14:24:51.748" endtime="20221019 14:24:51.748"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='iec']</arg>
+<arg>${IEC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:24:51.748" level="INFO">Typing text '0700007172' into text field '//input[@name='iec']'.</msg>
+<status status="PASS" starttime="20221019 14:24:51.748" endtime="20221019 14:24:51.836"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IEC Number</arg>
+<status status="PASS" starttime="20221019 14:24:51.836" endtime="20221019 14:24:51.836"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='ifsc']</arg>
+<arg>${IFSC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:24:51.836" level="INFO">Typing text 'CITI0000004' into text field '//input[@name='ifsc']'.</msg>
+<status status="PASS" starttime="20221019 14:24:51.836" endtime="20221019 14:24:51.908"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IFSC Number</arg>
+<status status="PASS" starttime="20221019 14:24:51.908" endtime="20221019 14:24:51.908"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='fdate']</arg>
+<arg>${detail}[Start Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:24:51.916" level="INFO">Typing text '01.02.2018' into text field '//input[@name='fdate']'.</msg>
+<status status="PASS" starttime="20221019 14:24:51.908" endtime="20221019 14:24:51.982"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Start Date</arg>
+<status status="PASS" starttime="20221019 14:24:51.982" endtime="20221019 14:24:51.982"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='tdate']</arg>
+<arg>${detail}[End Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:24:51.982" level="INFO">Typing text '28.02.2018' into text field '//input[@name='tdate']'.</msg>
+<status status="PASS" starttime="20221019 14:24:51.982" endtime="20221019 14:24:52.054"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered End Date</arg>
+<status status="PASS" starttime="20221019 14:24:52.054" endtime="20221019 14:24:52.054"/>
+</kw>
+<kw name="Enter Captcha">
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:24:52.062" level="INFO">${now} = 2022-10-19 14:24:52</msg>
+<status status="PASS" starttime="20221019 14:24:52.054" endtime="20221019 14:24:52.062"/>
+</kw>
+<kw name="Add heading" library="RPA.Dialogs">
+<arg>Please Enter the Captcha</arg>
+<doc>Add a centered heading text element</doc>
+<status status="PASS" starttime="20221019 14:24:52.062" endtime="20221019 14:24:52.062"/>
+</kw>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>text</arg>
+<arg>label=captcha</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20221019 14:24:52.062" endtime="20221019 14:24:52.062"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:24:54.073" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:24:52.062" endtime="20221019 14:24:54.073"/>
+</kw>
+<kw name="Get Value From User" library="Dialogs">
+<var>${result}</var>
+<arg>Please Enter the Captcha</arg>
+<doc>Pauses execution and asks user to input a value.</doc>
+<msg timestamp="20221019 14:25:02.761" level="INFO">${result} = ccccc</msg>
+<status status="PASS" starttime="20221019 14:24:54.073" endtime="20221019 14:25:02.761"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:25:02.761" level="INFO">ccccc</msg>
+<status status="PASS" starttime="20221019 14:25:02.761" endtime="20221019 14:25:02.761"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Captcha is ${result}</arg>
+<status status="PASS" starttime="20221019 14:25:02.761" endtime="20221019 14:25:02.761"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='captext']</arg>
+<arg>${result}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:02.761" level="INFO">Typing text 'ccccc' into text field '//input[@name='captext']'.</msg>
+<status status="PASS" starttime="20221019 14:25:02.761" endtime="20221019 14:25:02.833"/>
+</kw>
+<kw name="Clear elements" library="RPA.Dialogs">
+<doc>Remove all previously defined elements and start from a clean state</doc>
+<status status="PASS" starttime="20221019 14:25:02.833" endtime="20221019 14:25:02.833"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Results cleared for next execution</arg>
+<status status="PASS" starttime="20221019 14:25:02.833" endtime="20221019 14:25:02.833"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>//input[@name='B1']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:02.833" level="INFO">Clicking button '//input[@name='B1']'.</msg>
+<status status="PASS" starttime="20221019 14:25:02.833" endtime="20221019 14:25:03.033"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Clicked on Show Details</arg>
+<status status="PASS" starttime="20221019 14:25:03.033" endtime="20221019 14:25:03.035"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:25:06.043" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:25:03.036" endtime="20221019 14:25:06.043"/>
+</kw>
+<status status="PASS" starttime="20221019 14:24:52.054" endtime="20221019 14:25:06.043"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${sample_text}</var>
+<arg>xpath://b//font[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:06.069" level="INFO">${sample_text} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:25:06.043" endtime="20221019 14:25:06.069"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${sample_text_converted}</var>
+<arg>${sample_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:25:06.069" level="INFO">${sample_text_converted} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:25:06.069" endtime="20221019 14:25:06.069"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:25:08.084" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:25:06.069" endtime="20221019 14:25:08.084"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${sample_text_converted.strip()}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:25:08.084" level="INFO">Length is 23</msg>
+<status status="PASS" starttime="20221019 14:25:08.084" endtime="20221019 14:25:08.084"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${sample_text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:25:08.084" level="INFO">Length is 23</msg>
+<status status="PASS" starttime="20221019 14:25:08.084" endtime="20221019 14:25:08.084"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${expected_text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:25:08.084" level="INFO">Length is 20</msg>
+<status status="PASS" starttime="20221019 14:25:08.084" endtime="20221019 14:25:08.084"/>
+</kw>
+<try>
+<branch type="TRY">
+<while condition="&quot;${expected_text}[2]&quot;!=&quot;${sample_text_converted}[2]&quot;" limit="1">
+<iter>
+<kw name="Re Enter Details">
+<arg>${detail}</arg>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:25:08.084" level="INFO">${now} = 2022-10-19 14:25:08</msg>
+<status status="PASS" starttime="20221019 14:25:08.084" endtime="20221019 14:25:08.084"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='iec']</arg>
+<arg>${IEC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:08.084" level="INFO">Typing text '0700007172' into text field '//input[@name='iec']'.</msg>
+<status status="PASS" starttime="20221019 14:25:08.084" endtime="20221019 14:25:08.154"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IEC Number</arg>
+<status status="PASS" starttime="20221019 14:25:08.154" endtime="20221019 14:25:08.154"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='ifsc']</arg>
+<arg>${IFSC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:08.154" level="INFO">Typing text 'CITI0000004' into text field '//input[@name='ifsc']'.</msg>
+<status status="PASS" starttime="20221019 14:25:08.154" endtime="20221019 14:25:08.218"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IFSC Number</arg>
+<status status="PASS" starttime="20221019 14:25:08.218" endtime="20221019 14:25:08.226"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='fdate']</arg>
+<arg>${detail}[Start Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:08.226" level="INFO">Typing text '01.02.2018' into text field '//input[@name='fdate']'.</msg>
+<status status="PASS" starttime="20221019 14:25:08.226" endtime="20221019 14:25:08.292"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Start Date</arg>
+<status status="PASS" starttime="20221019 14:25:08.292" endtime="20221019 14:25:08.292"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='tdate']</arg>
+<arg>${detail}[End Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:08.292" level="INFO">Typing text '28.02.2018' into text field '//input[@name='tdate']'.</msg>
+<status status="PASS" starttime="20221019 14:25:08.292" endtime="20221019 14:25:08.356"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered End Date</arg>
+<status status="PASS" starttime="20221019 14:25:08.356" endtime="20221019 14:25:08.356"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:08.084" endtime="20221019 14:25:08.356"/>
+</kw>
+<kw name="Enter Captcha">
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:25:08.364" level="INFO">${now} = 2022-10-19 14:25:08</msg>
+<status status="PASS" starttime="20221019 14:25:08.364" endtime="20221019 14:25:08.364"/>
+</kw>
+<kw name="Add heading" library="RPA.Dialogs">
+<arg>Please Enter the Captcha</arg>
+<doc>Add a centered heading text element</doc>
+<status status="PASS" starttime="20221019 14:25:08.364" endtime="20221019 14:25:08.364"/>
+</kw>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>text</arg>
+<arg>label=captcha</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20221019 14:25:08.364" endtime="20221019 14:25:08.364"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:25:10.365" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:25:08.364" endtime="20221019 14:25:10.366"/>
+</kw>
+<kw name="Get Value From User" library="Dialogs">
+<var>${result}</var>
+<arg>Please Enter the Captcha</arg>
+<doc>Pauses execution and asks user to input a value.</doc>
+<msg timestamp="20221019 14:25:14.528" level="INFO">${result} = bbbb</msg>
+<status status="PASS" starttime="20221019 14:25:10.366" endtime="20221019 14:25:14.528"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:25:14.528" level="INFO">bbbb</msg>
+<status status="PASS" starttime="20221019 14:25:14.528" endtime="20221019 14:25:14.528"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Captcha is ${result}</arg>
+<status status="PASS" starttime="20221019 14:25:14.528" endtime="20221019 14:25:14.536"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='captext']</arg>
+<arg>${result}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:14.544" level="INFO">Typing text 'bbbb' into text field '//input[@name='captext']'.</msg>
+<status status="PASS" starttime="20221019 14:25:14.536" endtime="20221019 14:25:14.608"/>
+</kw>
+<kw name="Clear elements" library="RPA.Dialogs">
+<doc>Remove all previously defined elements and start from a clean state</doc>
+<status status="PASS" starttime="20221019 14:25:14.608" endtime="20221019 14:25:14.608"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Results cleared for next execution</arg>
+<status status="PASS" starttime="20221019 14:25:14.608" endtime="20221019 14:25:14.608"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>//input[@name='B1']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:14.608" level="INFO">Clicking button '//input[@name='B1']'.</msg>
+<status status="PASS" starttime="20221019 14:25:14.608" endtime="20221019 14:25:14.833"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Clicked on Show Details</arg>
+<status status="PASS" starttime="20221019 14:25:14.833" endtime="20221019 14:25:14.833"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:25:17.839" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:25:14.833" endtime="20221019 14:25:17.839"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:08.356" endtime="20221019 14:25:17.839"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${sample_text}</var>
+<arg>xpath://b//font[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:17.863" level="INFO">${sample_text} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:25:17.839" endtime="20221019 14:25:17.863"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${sample_text_converted}</var>
+<arg>${sample_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:25:17.863" level="INFO">${sample_text_converted} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:25:17.863" endtime="20221019 14:25:17.863"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${captcha_counter}</var>
+<arg>${captcha_counter}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:25:17.863" level="INFO">${captcha_counter} = 2</msg>
+<status status="PASS" starttime="20221019 14:25:17.863" endtime="20221019 14:25:17.863"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${message}</var>
+<arg>Pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221019 14:25:17.863" level="INFO">${message} = Pass</msg>
+<status status="PASS" starttime="20221019 14:25:17.863" endtime="20221019 14:25:17.863"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:08.084" endtime="20221019 14:25:17.863"/>
+</iter>
+<status status="FAIL" starttime="20221019 14:25:08.084" endtime="20221019 14:25:17.863"/>
+</while>
+<status status="FAIL" starttime="20221019 14:25:08.084" endtime="20221019 14:25:17.863"/>
+</branch>
+<branch type="EXCEPT" pattern_type="start">
+<pattern>WHILE loop was aborted</pattern>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>The loop did not finish within the limit.</arg>
+<status status="PASS" starttime="20221019 14:25:17.863" endtime="20221019 14:25:17.863"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${message}</var>
+<arg>Fail</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221019 14:25:17.863" level="INFO">${message} = Fail</msg>
+<status status="PASS" starttime="20221019 14:25:17.863" endtime="20221019 14:25:17.863"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>The loop did not finish within the limit.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:25:17.863" level="INFO">The loop did not finish within the limit.</msg>
+<status status="PASS" starttime="20221019 14:25:17.863" endtime="20221019 14:25:17.863"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:17.863" endtime="20221019 14:25:17.871"/>
+</branch>
+<status status="PASS" starttime="20221019 14:25:08.084" endtime="20221019 14:25:17.871"/>
+</try>
+<if>
+<branch type="IF" condition="'${message}' == &quot;Pass&quot;">
+<kw name="Entering Other Details">
+<arg>${detail}</arg>
+<arg>${now}</arg>
+<status status="NOT RUN" starttime="20221019 14:25:17.871" endtime="20221019 14:25:17.871"/>
+</kw>
+<status status="NOT RUN" starttime="20221019 14:25:17.871" endtime="20221019 14:25:17.871"/>
+</branch>
+<branch type="ELSE">
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>next record</arg>
+<status status="PASS" starttime="20221019 14:25:17.871" endtime="20221019 14:25:17.871"/>
+</kw>
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221019 14:25:17.871" endtime="20221019 14:25:20.020"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:17.871" endtime="20221019 14:25:20.020"/>
+</branch>
+<status status="PASS" starttime="20221019 14:25:17.871" endtime="20221019 14:25:20.020"/>
+</if>
+<status status="PASS" starttime="20221019 14:24:51.748" endtime="20221019 14:25:20.020"/>
+</kw>
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>http://dgftebrc.nic.in:8100/BRCQueryTrade/index.jsp</arg>
+<arg>maximized=True</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20221019 14:25:20.020" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221019 14:25:20.020" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20221019 14:25:23.302" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221019 14:25:24.406" level="INFO">Created Chrome browser with arguments: --start-maximized --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20221019 14:25:24.406" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20221019 14:25:24.406" level="INFO">Opening url 'http://dgftebrc.nic.in:8100/BRCQueryTrade/index.jsp'</msg>
+<status status="PASS" starttime="20221019 14:25:20.020" endtime="20221019 14:25:26.055"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Record Entered Successfully</arg>
+<status status="PASS" starttime="20221019 14:25:26.055" endtime="20221019 14:25:26.063"/>
+</kw>
+<status status="PASS" starttime="20221019 14:24:51.748" endtime="20221019 14:25:26.063"/>
+</iter>
+<iter>
+<var name="${detail}">{'Start Date': '01.03.2018', 'End Date': '31.03.2018'}</var>
+<kw name="Input form dialog in browser">
+<arg>${detail}</arg>
+<arg>${IEC}</arg>
+<arg>${IFSC}</arg>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:25:26.063" level="INFO">${now} = 2022-10-19 14:25:26</msg>
+<status status="PASS" starttime="20221019 14:25:26.063" endtime="20221019 14:25:26.063"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='iec']</arg>
+<arg>${IEC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:26.063" level="INFO">Typing text '0700007172' into text field '//input[@name='iec']'.</msg>
+<status status="PASS" starttime="20221019 14:25:26.063" endtime="20221019 14:25:26.135"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IEC Number</arg>
+<status status="PASS" starttime="20221019 14:25:26.135" endtime="20221019 14:25:26.135"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='ifsc']</arg>
+<arg>${IFSC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:26.135" level="INFO">Typing text 'CITI0000004' into text field '//input[@name='ifsc']'.</msg>
+<status status="PASS" starttime="20221019 14:25:26.135" endtime="20221019 14:25:26.200"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IFSC Number</arg>
+<status status="PASS" starttime="20221019 14:25:26.200" endtime="20221019 14:25:26.200"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='fdate']</arg>
+<arg>${detail}[Start Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:26.200" level="INFO">Typing text '01.03.2018' into text field '//input[@name='fdate']'.</msg>
+<status status="PASS" starttime="20221019 14:25:26.200" endtime="20221019 14:25:26.265"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Start Date</arg>
+<status status="PASS" starttime="20221019 14:25:26.265" endtime="20221019 14:25:26.265"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='tdate']</arg>
+<arg>${detail}[End Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:26.265" level="INFO">Typing text '31.03.2018' into text field '//input[@name='tdate']'.</msg>
+<status status="PASS" starttime="20221019 14:25:26.265" endtime="20221019 14:25:26.329"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered End Date</arg>
+<status status="PASS" starttime="20221019 14:25:26.329" endtime="20221019 14:25:26.329"/>
+</kw>
+<kw name="Enter Captcha">
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:25:26.329" level="INFO">${now} = 2022-10-19 14:25:26</msg>
+<status status="PASS" starttime="20221019 14:25:26.329" endtime="20221019 14:25:26.329"/>
+</kw>
+<kw name="Add heading" library="RPA.Dialogs">
+<arg>Please Enter the Captcha</arg>
+<doc>Add a centered heading text element</doc>
+<status status="PASS" starttime="20221019 14:25:26.329" endtime="20221019 14:25:26.329"/>
+</kw>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>text</arg>
+<arg>label=captcha</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20221019 14:25:26.329" endtime="20221019 14:25:26.329"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:25:28.335" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:25:26.329" endtime="20221019 14:25:28.335"/>
+</kw>
+<kw name="Get Value From User" library="Dialogs">
+<var>${result}</var>
+<arg>Please Enter the Captcha</arg>
+<doc>Pauses execution and asks user to input a value.</doc>
+<msg timestamp="20221019 14:25:36.331" level="INFO">${result} = bbbb</msg>
+<status status="PASS" starttime="20221019 14:25:28.335" endtime="20221019 14:25:36.332"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:25:36.334" level="INFO">bbbb</msg>
+<status status="PASS" starttime="20221019 14:25:36.333" endtime="20221019 14:25:36.334"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Captcha is ${result}</arg>
+<status status="PASS" starttime="20221019 14:25:36.334" endtime="20221019 14:25:36.336"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='captext']</arg>
+<arg>${result}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:36.337" level="INFO">Typing text 'bbbb' into text field '//input[@name='captext']'.</msg>
+<status status="PASS" starttime="20221019 14:25:36.337" endtime="20221019 14:25:36.400"/>
+</kw>
+<kw name="Clear elements" library="RPA.Dialogs">
+<doc>Remove all previously defined elements and start from a clean state</doc>
+<status status="PASS" starttime="20221019 14:25:36.400" endtime="20221019 14:25:36.400"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Results cleared for next execution</arg>
+<status status="PASS" starttime="20221019 14:25:36.400" endtime="20221019 14:25:36.400"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>//input[@name='B1']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:36.408" level="INFO">Clicking button '//input[@name='B1']'.</msg>
+<status status="PASS" starttime="20221019 14:25:36.400" endtime="20221019 14:25:36.619"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Clicked on Show Details</arg>
+<status status="PASS" starttime="20221019 14:25:36.620" endtime="20221019 14:25:36.622"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:25:39.629" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:25:36.623" endtime="20221019 14:25:39.629"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:26.329" endtime="20221019 14:25:39.629"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${sample_text}</var>
+<arg>xpath://b//font[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:39.654" level="INFO">${sample_text} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:25:39.629" endtime="20221019 14:25:39.654"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${sample_text_converted}</var>
+<arg>${sample_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:25:39.654" level="INFO">${sample_text_converted} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:25:39.654" endtime="20221019 14:25:39.654"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:25:41.669" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:25:39.654" endtime="20221019 14:25:41.669"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${sample_text_converted.strip()}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:25:41.669" level="INFO">Length is 23</msg>
+<status status="PASS" starttime="20221019 14:25:41.669" endtime="20221019 14:25:41.669"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${sample_text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:25:41.669" level="INFO">Length is 23</msg>
+<status status="PASS" starttime="20221019 14:25:41.669" endtime="20221019 14:25:41.669"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${expected_text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:25:41.669" level="INFO">Length is 20</msg>
+<status status="PASS" starttime="20221019 14:25:41.669" endtime="20221019 14:25:41.669"/>
+</kw>
+<try>
+<branch type="TRY">
+<while condition="&quot;${expected_text}[2]&quot;!=&quot;${sample_text_converted}[2]&quot;" limit="1">
+<iter>
+<kw name="Re Enter Details">
+<arg>${detail}</arg>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:25:41.669" level="INFO">${now} = 2022-10-19 14:25:41</msg>
+<status status="PASS" starttime="20221019 14:25:41.669" endtime="20221019 14:25:41.669"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='iec']</arg>
+<arg>${IEC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:41.669" level="INFO">Typing text '0700007172' into text field '//input[@name='iec']'.</msg>
+<status status="PASS" starttime="20221019 14:25:41.669" endtime="20221019 14:25:41.741"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IEC Number</arg>
+<status status="PASS" starttime="20221019 14:25:41.741" endtime="20221019 14:25:41.741"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='ifsc']</arg>
+<arg>${IFSC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:41.749" level="INFO">Typing text 'CITI0000004' into text field '//input[@name='ifsc']'.</msg>
+<status status="PASS" starttime="20221019 14:25:41.749" endtime="20221019 14:25:41.813"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IFSC Number</arg>
+<status status="PASS" starttime="20221019 14:25:41.813" endtime="20221019 14:25:41.813"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='fdate']</arg>
+<arg>${detail}[Start Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:41.821" level="INFO">Typing text '01.03.2018' into text field '//input[@name='fdate']'.</msg>
+<status status="PASS" starttime="20221019 14:25:41.813" endtime="20221019 14:25:41.886"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Start Date</arg>
+<status status="PASS" starttime="20221019 14:25:41.886" endtime="20221019 14:25:41.888"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='tdate']</arg>
+<arg>${detail}[End Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:25:41.889" level="INFO">Typing text '31.03.2018' into text field '//input[@name='tdate']'.</msg>
+<status status="PASS" starttime="20221019 14:25:41.888" endtime="20221019 14:25:41.951"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered End Date</arg>
+<status status="PASS" starttime="20221019 14:25:41.951" endtime="20221019 14:25:41.951"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:41.669" endtime="20221019 14:25:41.959"/>
+</kw>
+<kw name="Enter Captcha">
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:25:41.959" level="INFO">${now} = 2022-10-19 14:25:41</msg>
+<status status="PASS" starttime="20221019 14:25:41.959" endtime="20221019 14:25:41.959"/>
+</kw>
+<kw name="Add heading" library="RPA.Dialogs">
+<arg>Please Enter the Captcha</arg>
+<doc>Add a centered heading text element</doc>
+<status status="PASS" starttime="20221019 14:25:41.959" endtime="20221019 14:25:41.959"/>
+</kw>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>text</arg>
+<arg>label=captcha</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20221019 14:25:41.959" endtime="20221019 14:25:41.959"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:25:43.963" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:25:41.959" endtime="20221019 14:25:43.963"/>
+</kw>
+<kw name="Get Value From User" library="Dialogs">
+<var>${result}</var>
+<arg>Please Enter the Captcha</arg>
+<doc>Pauses execution and asks user to input a value.</doc>
+<msg timestamp="20221019 14:26:04.167" level="INFO">${result} = bbb</msg>
+<status status="PASS" starttime="20221019 14:25:43.963" endtime="20221019 14:26:04.167"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:04.167" level="INFO">bbb</msg>
+<status status="PASS" starttime="20221019 14:26:04.167" endtime="20221019 14:26:04.167"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Captcha is ${result}</arg>
+<status status="PASS" starttime="20221019 14:26:04.167" endtime="20221019 14:26:04.167"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='captext']</arg>
+<arg>${result}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:04.167" level="INFO">Typing text 'bbb' into text field '//input[@name='captext']'.</msg>
+<status status="PASS" starttime="20221019 14:26:04.167" endtime="20221019 14:26:04.231"/>
+</kw>
+<kw name="Clear elements" library="RPA.Dialogs">
+<doc>Remove all previously defined elements and start from a clean state</doc>
+<status status="PASS" starttime="20221019 14:26:04.231" endtime="20221019 14:26:04.231"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Results cleared for next execution</arg>
+<status status="PASS" starttime="20221019 14:26:04.231" endtime="20221019 14:26:04.239"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>//input[@name='B1']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:04.239" level="INFO">Clicking button '//input[@name='B1']'.</msg>
+<status status="PASS" starttime="20221019 14:26:04.239" endtime="20221019 14:26:04.558"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Clicked on Show Details</arg>
+<status status="PASS" starttime="20221019 14:26:04.558" endtime="20221019 14:26:04.566"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:07.566" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:04.566" endtime="20221019 14:26:07.566"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:41.959" endtime="20221019 14:26:07.566"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${sample_text}</var>
+<arg>xpath://b//font[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:07.591" level="INFO">${sample_text} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:26:07.566" endtime="20221019 14:26:07.591"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${sample_text_converted}</var>
+<arg>${sample_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:26:07.591" level="INFO">${sample_text_converted} = e-BRC Bulk Data request</msg>
+<status status="PASS" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${captcha_counter}</var>
+<arg>${captcha_counter}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:26:07.591" level="INFO">${captcha_counter} = 2</msg>
+<status status="PASS" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${message}</var>
+<arg>Pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221019 14:26:07.591" level="INFO">${message} = Pass</msg>
+<status status="PASS" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:41.669" endtime="20221019 14:26:07.591"/>
+</iter>
+<status status="FAIL" starttime="20221019 14:25:41.669" endtime="20221019 14:26:07.591"/>
+</while>
+<status status="FAIL" starttime="20221019 14:25:41.669" endtime="20221019 14:26:07.591"/>
+</branch>
+<branch type="EXCEPT" pattern_type="start">
+<pattern>WHILE loop was aborted</pattern>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>The loop did not finish within the limit.</arg>
+<status status="PASS" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${message}</var>
+<arg>Fail</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221019 14:26:07.591" level="INFO">${message} = Fail</msg>
+<status status="PASS" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>The loop did not finish within the limit.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:07.591" level="INFO">The loop did not finish within the limit.</msg>
+<status status="PASS" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</kw>
+<status status="PASS" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</branch>
+<status status="PASS" starttime="20221019 14:25:41.669" endtime="20221019 14:26:07.591"/>
+</try>
+<if>
+<branch type="IF" condition="'${message}' == &quot;Pass&quot;">
+<kw name="Entering Other Details">
+<arg>${detail}</arg>
+<arg>${now}</arg>
+<status status="NOT RUN" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</kw>
+<status status="NOT RUN" starttime="20221019 14:26:07.591" endtime="20221019 14:26:07.591"/>
+</branch>
+<branch type="ELSE">
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>next record</arg>
+<status status="PASS" starttime="20221019 14:26:07.600" endtime="20221019 14:26:07.600"/>
+</kw>
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221019 14:26:07.600" endtime="20221019 14:26:09.765"/>
+</kw>
+<status status="PASS" starttime="20221019 14:26:07.600" endtime="20221019 14:26:09.765"/>
+</branch>
+<status status="PASS" starttime="20221019 14:26:07.591" endtime="20221019 14:26:09.765"/>
+</if>
+<status status="PASS" starttime="20221019 14:25:26.063" endtime="20221019 14:26:09.765"/>
+</kw>
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>http://dgftebrc.nic.in:8100/BRCQueryTrade/index.jsp</arg>
+<arg>maximized=True</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20221019 14:26:09.765" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221019 14:26:09.765" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20221019 14:26:12.770" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221019 14:26:13.813" level="INFO">Created Chrome browser with arguments: --start-maximized --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20221019 14:26:13.821" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20221019 14:26:13.821" level="INFO">Opening url 'http://dgftebrc.nic.in:8100/BRCQueryTrade/index.jsp'</msg>
+<status status="PASS" starttime="20221019 14:26:09.765" endtime="20221019 14:26:14.791"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Record Entered Successfully</arg>
+<status status="PASS" starttime="20221019 14:26:14.791" endtime="20221019 14:26:14.791"/>
+</kw>
+<status status="PASS" starttime="20221019 14:25:26.063" endtime="20221019 14:26:14.791"/>
+</iter>
+<iter>
+<var name="${detail}">{'Start Date': '01.04.2018', 'End Date': '30.04.2018'}</var>
+<kw name="Input form dialog in browser">
+<arg>${detail}</arg>
+<arg>${IEC}</arg>
+<arg>${IFSC}</arg>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:26:14.791" level="INFO">${now} = 2022-10-19 14:26:14</msg>
+<status status="PASS" starttime="20221019 14:26:14.791" endtime="20221019 14:26:14.791"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='iec']</arg>
+<arg>${IEC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:14.791" level="INFO">Typing text '0700007172' into text field '//input[@name='iec']'.</msg>
+<status status="PASS" starttime="20221019 14:26:14.791" endtime="20221019 14:26:14.879"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IEC Number</arg>
+<status status="PASS" starttime="20221019 14:26:14.879" endtime="20221019 14:26:14.879"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='ifsc']</arg>
+<arg>${IFSC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:14.879" level="INFO">Typing text 'CITI0000004' into text field '//input[@name='ifsc']'.</msg>
+<status status="PASS" starttime="20221019 14:26:14.879" endtime="20221019 14:26:14.951"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered IFSC Number</arg>
+<status status="PASS" starttime="20221019 14:26:14.951" endtime="20221019 14:26:14.951"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='fdate']</arg>
+<arg>${detail}[Start Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:14.951" level="INFO">Typing text '01.04.2018' into text field '//input[@name='fdate']'.</msg>
+<status status="PASS" starttime="20221019 14:26:14.951" endtime="20221019 14:26:15.024"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Start Date</arg>
+<status status="PASS" starttime="20221019 14:26:15.024" endtime="20221019 14:26:15.024"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='tdate']</arg>
+<arg>${detail}[End Date]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:15.024" level="INFO">Typing text '30.04.2018' into text field '//input[@name='tdate']'.</msg>
+<status status="PASS" starttime="20221019 14:26:15.024" endtime="20221019 14:26:15.096"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered End Date</arg>
+<status status="PASS" starttime="20221019 14:26:15.096" endtime="20221019 14:26:15.096"/>
+</kw>
+<kw name="Enter Captcha">
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:26:15.096" level="INFO">${now} = 2022-10-19 14:26:15</msg>
+<status status="PASS" starttime="20221019 14:26:15.096" endtime="20221019 14:26:15.096"/>
+</kw>
+<kw name="Add heading" library="RPA.Dialogs">
+<arg>Please Enter the Captcha</arg>
+<doc>Add a centered heading text element</doc>
+<status status="PASS" starttime="20221019 14:26:15.104" endtime="20221019 14:26:15.104"/>
+</kw>
+<kw name="Add text input" library="RPA.Dialogs">
+<arg>text</arg>
+<arg>label=captcha</arg>
+<tag>input</tag>
+<doc>Add a text input element</doc>
+<status status="PASS" starttime="20221019 14:26:15.104" endtime="20221019 14:26:15.104"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:17.112" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:15.104" endtime="20221019 14:26:17.112"/>
+</kw>
+<kw name="Get Value From User" library="Dialogs">
+<var>${result}</var>
+<arg>Please Enter the Captcha</arg>
+<doc>Pauses execution and asks user to input a value.</doc>
+<msg timestamp="20221019 14:26:26.624" level="INFO">${result} = dc7yh</msg>
+<status status="PASS" starttime="20221019 14:26:17.112" endtime="20221019 14:26:26.624"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:26.624" level="INFO">dc7yh</msg>
+<status status="PASS" starttime="20221019 14:26:26.624" endtime="20221019 14:26:26.624"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Entered Captcha is ${result}</arg>
+<status status="PASS" starttime="20221019 14:26:26.624" endtime="20221019 14:26:26.632"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name='captext']</arg>
+<arg>${result}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:26.632" level="INFO">Typing text 'dc7yh' into text field '//input[@name='captext']'.</msg>
+<status status="PASS" starttime="20221019 14:26:26.632" endtime="20221019 14:26:26.704"/>
+</kw>
+<kw name="Clear elements" library="RPA.Dialogs">
+<doc>Remove all previously defined elements and start from a clean state</doc>
+<status status="PASS" starttime="20221019 14:26:26.704" endtime="20221019 14:26:26.704"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Results cleared for next execution</arg>
+<status status="PASS" starttime="20221019 14:26:26.704" endtime="20221019 14:26:26.704"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>//input[@name='B1']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:26.704" level="INFO">Clicking button '//input[@name='B1']'.</msg>
+<status status="PASS" starttime="20221019 14:26:26.704" endtime="20221019 14:26:27.495"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Clicked on Show Details</arg>
+<status status="PASS" starttime="20221019 14:26:27.495" endtime="20221019 14:26:27.497"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:30.507" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:27.497" endtime="20221019 14:26:30.507"/>
+</kw>
+<status status="PASS" starttime="20221019 14:26:15.096" endtime="20221019 14:26:30.507"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${sample_text}</var>
+<arg>xpath://b//font[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:30.531" level="INFO">${sample_text} = Uploaded BRC Details </msg>
+<status status="PASS" starttime="20221019 14:26:30.507" endtime="20221019 14:26:30.531"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${sample_text_converted}</var>
+<arg>${sample_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:26:30.531" level="INFO">${sample_text_converted} = Uploaded BRC Details </msg>
+<status status="PASS" starttime="20221019 14:26:30.531" endtime="20221019 14:26:30.531"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:32.545" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:30.531" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${sample_text_converted.strip()}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:26:32.545" level="INFO">Length is 20</msg>
+<status status="PASS" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${sample_text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:26:32.545" level="INFO">Length is 21</msg>
+<status status="PASS" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<arg>${expected_text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20221019 14:26:32.545" level="INFO">Length is 20</msg>
+<status status="PASS" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<try>
+<branch type="TRY">
+<while condition="&quot;${expected_text}[2]&quot;!=&quot;${sample_text_converted}[2]&quot;" limit="1">
+<iter>
+<kw name="Re Enter Details">
+<arg>${detail}</arg>
+<arg>${now}</arg>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Enter Captcha">
+<arg>${now}</arg>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${sample_text}</var>
+<arg>xpath://b//font[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${sample_text_converted}</var>
+<arg>${sample_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${captcha_counter}</var>
+<arg>${captcha_counter}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${message}</var>
+<arg>Pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</iter>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</while>
+<status status="PASS" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</branch>
+<branch type="EXCEPT" pattern_type="start">
+<pattern>WHILE loop was aborted</pattern>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>The loop did not finish within the limit.</arg>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.545"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${message}</var>
+<arg>Fail</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>The loop did not finish within the limit.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<status status="NOT RUN" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.553"/>
+</branch>
+<status status="PASS" starttime="20221019 14:26:32.545" endtime="20221019 14:26:32.553"/>
+</try>
+<if>
+<branch type="IF" condition="'${message}' == &quot;Pass&quot;">
+<kw name="Entering Other Details">
+<arg>${detail}</arg>
+<arg>${now}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")</arg>
+<arg>modules=datetime</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:26:32.553" level="INFO">${now} = 2022-10-19 14:26:32</msg>
+<status status="PASS" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<kw name="Split String" library="String">
+<var>@{month_num}</var>
+<arg>${detail}[Start Date]</arg>
+<arg>.</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20221019 14:26:32.553" level="INFO">@{month_num} = [ 01 | 04 | 2018 ]</msg>
+<status status="PASS" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${month_num}[1]</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:32.553" level="INFO">04</msg>
+<status status="PASS" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>${month_num}[1]</arg>
+<status status="PASS" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${mnum}</var>
+<arg>${month_num}[1]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221019 14:26:32.553" level="INFO">${mnum} = 04</msg>
+<status status="PASS" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<kw name="Full Month Name" library="monthname">
+<var>${month_name}</var>
+<arg>${mnum}</arg>
+<msg timestamp="20221019 14:26:32.553" level="INFO">Full name:  April</msg>
+<msg timestamp="20221019 14:26:32.553" level="INFO">${month_name} = April</msg>
+<status status="PASS" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<kw name="Convert To Upper Case" library="String">
+<var>${month_name}</var>
+<arg>${month_name}</arg>
+<doc>Converts string to upper case.</doc>
+<msg timestamp="20221019 14:26:32.553" level="INFO">${month_name} = APRIL</msg>
+<status status="PASS" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.553"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>${month_name}</arg>
+<status status="PASS" starttime="20221019 14:26:32.553" endtime="20221019 14:26:32.561"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${month_name}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:32.561" level="INFO">APRIL</msg>
+<status status="PASS" starttime="20221019 14:26:32.561" endtime="20221019 14:26:32.561"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${year}</var>
+<arg>${month_num}[2]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221019 14:26:32.561" level="INFO">${year} = 2018</msg>
+<status status="PASS" starttime="20221019 14:26:32.561" endtime="20221019 14:26:32.561"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>${year}</arg>
+<status status="PASS" starttime="20221019 14:26:32.561" endtime="20221019 14:26:32.561"/>
+</kw>
+<kw name="Save the page">
+<arg>${detail}</arg>
+<arg>${year}</arg>
+<arg>${month_name}</arg>
+<arg>${IEC}</arg>
+<arg>${IFSC}</arg>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>ctrl</arg>
+<arg>P</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<msg timestamp="20221019 14:26:32.569" level="INFO">Pressing keys: Key.ctrl, 'p'</msg>
+<status status="PASS" starttime="20221019 14:26:32.569" endtime="20221019 14:26:32.569"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:37.570" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:32.569" endtime="20221019 14:26:37.570"/>
+</kw>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>ENTER</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<msg timestamp="20221019 14:26:37.570" level="INFO">Pressing keys: Key.enter</msg>
+<status status="PASS" starttime="20221019 14:26:37.570" endtime="20221019 14:26:37.570"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>06</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:43.584" level="INFO">Slept 6 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:37.570" endtime="20221019 14:26:43.584"/>
+</kw>
+<kw name="Control Window" library="RPA.Windows">
+<arg>Save Print Output As</arg>
+<tag>window</tag>
+<doc>Controls the window defined by the locator.</doc>
+<msg timestamp="20221019 14:26:43.592" level="INFO">Getting element with locator: Save Print Output As and type:WindowControl</msg>
+<msg timestamp="20221019 14:26:43.592" level="INFO">Root element: &lt;uiautomation.uiautomation.PaneControl object at 0x000001BCC384A490&gt;</msg>
+<msg timestamp="20221019 14:26:43.592" level="INFO">Locator 'Save Print Output As and type:WindowControl' produced matcher: MatchObject(locators=[('Name', 'Save Print Output As', 0), ('ControlType', 'WindowControl', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20221019 14:26:43.684" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.WindowControl object at 0x000001BCC31CD6D0&gt;, locator='Save Print Output As and type:WindowControl', name='Save Print Output As', automation_id='', control_type='WindowControl', class_name='#32770', left=0, right=939, top=0, bottom=791, width=939, height=791, xcenter=469, ycenter=395)</msg>
+<status status="PASS" starttime="20221019 14:26:43.584" endtime="20221019 14:26:44.201"/>
+</kw>
+<kw name="Send Keys" library="RPA.Windows">
+<arg>id:1001</arg>
+<arg>${OUTPUT_DIR}${/}output${/}${year}${/}${month_name}${/}${IEC}_${IFSC}_ ${detail}[Start Date].pdf</arg>
+<tag>action</tag>
+<doc>Send keys to desktop, current window or to Control element
+defined by given locator.</doc>
+<msg timestamp="20221019 14:26:44.201" level="INFO">Getting element with locator: id:1001</msg>
+<msg timestamp="20221019 14:26:44.201" level="INFO">Root element: &lt;uiautomation.uiautomation.WindowControl object at 0x000001BCC31CD6D0&gt;</msg>
+<msg timestamp="20221019 14:26:44.201" level="INFO">Locator 'id:1001' produced matcher: MatchObject(locators=[('AutomationId', '1001', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20221019 14:26:44.392" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.EditControl object at 0x000001BCC376CCA0&gt;, locator='id:1001', name='File name:', automation_id='1001', control_type='EditControl', class_name='Edit', left=202, right=891, top=612, bottom=639, width=689, height=27, xcenter=546, ycenter=625)</msg>
+<msg timestamp="20221019 14:26:44.392" level="INFO">Sending keys 'C:\\Users\\Sandeep Bhat\\Desktop\\RoboCorp\\test\\EBRC_Details_Enter\\output\\2018\\APRIL\\0700007172_CITI0000004_ 01.04.2018.pdf' to element &lt;uiautomation.uiautomation.EditControl object at 0x000001BCC376CCA0&gt;</msg>
+<status status="PASS" starttime="20221019 14:26:44.201" endtime="20221019 14:26:47.012"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>03</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:50.022" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:47.012" endtime="20221019 14:26:50.022"/>
+</kw>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>ENTER</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<msg timestamp="20221019 14:26:50.023" level="INFO">Pressing keys: Key.enter</msg>
+<status status="PASS" starttime="20221019 14:26:50.023" endtime="20221019 14:26:50.023"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:52.027" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:50.023" endtime="20221019 14:26:52.027"/>
+</kw>
+<status status="PASS" starttime="20221019 14:26:32.561" endtime="20221019 14:26:52.027"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>First Page Captured Successfully</arg>
+<status status="PASS" starttime="20221019 14:26:52.027" endtime="20221019 14:26:52.027"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>02</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221019 14:26:54.030" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221019 14:26:52.027" endtime="20221019 14:26:54.030"/>
+</kw>
+<kw name="Get Element Count" library="RPA.Browser.Selenium">
+<var>${rows}</var>
+<arg>//body[1]/div[2]/center[1]/table[1]/tbody/tr</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20221019 14:26:54.038" level="INFO">${rows} = 2</msg>
+<status status="PASS" starttime="20221019 14:26:54.030" endtime="20221019 14:26:54.038"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${rows}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:54.038" level="INFO">2</msg>
+<status status="PASS" starttime="20221019 14:26:54.038" endtime="20221019 14:26:54.038"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>${rows} count present</arg>
+<status status="PASS" starttime="20221019 14:26:54.038" endtime="20221019 14:26:54.046"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${rows}</var>
+<arg>${rows}-1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:26:54.046" level="INFO">${rows} = 1</msg>
+<status status="PASS" starttime="20221019 14:26:54.046" endtime="20221019 14:26:54.046"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${counter}</var>
+<value>${rows}</value>
+<iter>
+<var name="${counter}">0</var>
+<kw name="Evaluate" library="BuiltIn">
+<var>${count}</var>
+<arg>${counter}+2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:26:54.046" level="INFO">${count} = 2</msg>
+<status status="PASS" starttime="20221019 14:26:54.046" endtime="20221019 14:26:54.046"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${count2}</var>
+<arg>${counter}+3</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221019 14:26:54.046" level="INFO">${count2} = 3</msg>
+<status status="PASS" starttime="20221019 14:26:54.046" endtime="20221019 14:26:54.046"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${count}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:54.046" level="INFO">2</msg>
+<status status="PASS" starttime="20221019 14:26:54.046" endtime="20221019 14:26:54.046"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${data}</var>
+<arg>//body[1]/div[2]/center[1]/table[1]/tbody[1]/tr[${count}]/td[4]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:54.070" level="INFO">${data} = 110008258</msg>
+<status status="PASS" starttime="20221019 14:26:54.046" endtime="20221019 14:26:54.070"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:54.072" level="INFO">110008258</msg>
+<status status="PASS" starttime="20221019 14:26:54.070" endtime="20221019 14:26:54.072"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>${data}</arg>
+<status status="PASS" starttime="20221019 14:26:54.072" endtime="20221019 14:26:54.072"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${data}</var>
+<arg>${data}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221019 14:26:54.072" level="INFO">${data} = 110008258</msg>
+<status status="PASS" starttime="20221019 14:26:54.072" endtime="20221019 14:26:54.072"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>//body[1]/div[2]/center[1]/table[1]/tbody[1]/tr[${count}]/td[11]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221019 14:26:54.072" level="INFO">Clicking element '//body[1]/div[2]/center[1]/table[1]/tbody[1]/tr[2]/td[11]'.</msg>
+<status status="PASS" starttime="20221019 14:26:54.072" endtime="20221019 14:26:54.160"/>
+</kw>
+<kw name="Logfile" library="log">
+<arg>${log_filename}</arg>
+<arg>${now}</arg>
+<arg>Info</arg>
+<arg>Clicking print for ${counter} record</arg>
+<status status="PASS" starttime="20221019 14:26:54.160" endtime="20221019 14:26:54.162"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${count}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20221019 14:26:54.163" level="INFO">
